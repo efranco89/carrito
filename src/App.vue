@@ -4,7 +4,7 @@
       <div class="col-md-7">
         <div class="row">
           <div class="col-md-6" v-for="prod in products" :key="prod.id">
-            <product :product="prod" v-on:add-cart="addItemToCart"/>
+            <product :product="prod" v-on:add-cart="addItemToCart" :isOnCart="isOnCart(prod)"/>
           </div>
         </div>
       </div>
@@ -36,6 +36,14 @@
     methods: {
       addItemToCart(product){
         this.cart.push(product);
+      },
+      isOnCart(product){
+        const item = this.cart.find(item => item.id === product.id);
+        if (item) {
+          return true
+        }else {
+          return false
+        }
       }
     }
   }

@@ -6,7 +6,9 @@
       <img :src="product.imagen" alt="" width="260" height="150">
       <p class="text-center text-muted card-text display-4">$ {{ Number(product.precio).toFixed() }}</p>
       <button type="button" name="add" class="btn btn-primary form-control"
-      @click="addToCart(product)">Agregar</button>
+      @click="addToCart(product)" :disabled="isOnCart">
+        {{ isOnCart ? 'Agregado' : 'Agregar' }}
+      </button>
     </div>
   </div>
 
@@ -15,7 +17,7 @@
 <script>
   export default{
     name: 'Product',
-    props: ['product'],
+    props: ['product', 'isOnCart'],
     methods: {
       addToCart(product){
         this.$emit('add-cart', product);
