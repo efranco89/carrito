@@ -10,7 +10,7 @@
       </div>
       <!-- Ends products -->
       <div class="col-md-5 my-5">
-        <cart :items="cart"/>
+        <cart :items="cart" v-on:remove-item="removeProduct"/>
       </div>
 
     </div>
@@ -44,6 +44,9 @@
         }else {
           return false
         }
+      },
+      removeProduct(product){
+        this.cart = this.cart.filter(item => item.id != product.id);
       }
     }
   }
