@@ -1,10 +1,10 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <div class="row">
       <div class="col-md-7">
         <div class="row">
-          <div class="col-md-6">
-            <product/>
+          <div class="col-md-6" v-for="prod in products" :key="prod.id">
+            <product :product="prod"/>
           </div>
         </div>
 
@@ -14,11 +14,17 @@
 </template>
 
 <script>
+  import products from './productos.json'
   import Product from './components/Product.vue'
   export default {
     name: 'app',
     components: {
       Product
+    },
+    data(){
+      return {
+        products
+      }
     }
   }
 </script>
