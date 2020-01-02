@@ -5,7 +5,8 @@
       <h5 class="text-center card-title">{{ product.titulo }}</h5>
       <img :src="product.imagen" alt="" width="260" height="150">
       <p class="text-center text-muted card-text display-4">$ {{ Number(product.precio).toFixed() }}</p>
-      <button type="button" name="button" class="btn btn-primary form-control">Agregar</button>
+      <button type="button" name="add" class="btn btn-primary form-control"
+      @click="addToCart(product)">Agregar</button>
     </div>
   </div>
 
@@ -14,7 +15,12 @@
 <script>
   export default{
     name: 'Product',
-    props: ['product']
+    props: ['product'],
+    methods: {
+      addToCart(product){
+        this.$emit('add-cart', product);
+      }
+    }
   }
 </script>
 
