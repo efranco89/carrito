@@ -10,7 +10,7 @@
       </div>
       <!-- Ends products -->
       <div class="col-md-5 my-5">
-        <cart :items="cart" v-on:remove-item="removeProduct"/>
+        <cart :items="cart" v-on:remove-item="removeProduct" v-on:payment="doPayment"/>
       </div>
 
     </div>
@@ -47,6 +47,10 @@
       },
       removeProduct(product){
         this.cart = this.cart.filter(item => item.id != product.id);
+      },
+      doPayment(){
+        this.cart = [];
+        alert('Venta completada');
       }
     }
   }
