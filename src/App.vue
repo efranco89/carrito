@@ -7,8 +7,12 @@
             <product :product="prod"/>
           </div>
         </div>
-
       </div>
+      <!-- Ends products -->
+      <div class="col-md-5 my-5">
+        <cart/>
+      </div>
+
     </div>
   </div>
 </template>
@@ -16,10 +20,12 @@
 <script>
   import products from './productos.json'
   import Product from './components/Product.vue'
+  import Cart from './components/Cart.vue'
   export default {
     name: 'app',
     components: {
-      Product
+      Product,
+      Cart
     },
     data(){
       return {
